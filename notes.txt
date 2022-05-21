@@ -2,3 +2,4 @@ show dbs
 db <- pokazuje nazwę obecnej bazy
 db.characters.insertOne({ name: 'Jon Snow' })
 db.characters.find()
+db.characters.remove( name: 'Jon snow' })

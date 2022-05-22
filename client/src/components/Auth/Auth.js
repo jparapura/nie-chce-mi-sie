@@ -16,6 +16,7 @@ const Auth = () => {
     const [isSignup, setIsSignup] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const clientId = 
 
     useEffect(() => {
@@ -93,7 +94,6 @@ const Auth = () => {
                             </Button>
                         )}
                         onSuccess={googleSuccess} onFailure={googleFailure} cookiePolicy={"single_host_origin"}
-                        isSignedIn={true}
                     />
                     <Grid container justifyContent="flex-end">
                         <Grid item>

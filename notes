@@ -1,5 +1,8 @@
 show dbs
+use db-name
+show collections
 db <- pokazuje nazwę obecnej bazy
 db.characters.insertOne({ name: 'Jon Snow' })
 db.characters.find()
 db.characters.remove({ name: 'Jon snow' })
+db.characters.drop()

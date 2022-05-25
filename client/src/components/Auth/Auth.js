@@ -9,11 +9,15 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Icon from './icon';
 import useStyles from './styles';
 import Input from './Input';
+import { signin, signup } from '../../actions/auth';
+
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
 
 const Auth = () => {
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
+    const [formData, setFormData] = useState(initialState);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -21,7 +25,7 @@ const Auth = () => {
 
     useEffect(() => {
         function start() {
-            gapi.client.init({
+            gapi.auth2.init({
                 client_id: clientId,
                 scope: ""
             })
@@ -32,16 +36,23 @@ const Auth = () => {
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         
+        if (isSignup) {
+            dispatch(signup(formData, navigate))
+        } else {
+            dispatch(signin(formData, navigate))
+        }
     }
 
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
+        setShowPassword(false);
     }
 
     const googleSuccess = async (res) => {
@@ -75,13 +86,13 @@ const Auth = () => {
                             isSignup && (
                                 <>
                                     <Input name="firstName" label="First Name" handleChange={handleChange} autofocus half />
-                                    <Input name="firstName" label="First Name" handleChange={handleChange} half />
+                                    <Input name="lastName" label="Last Name" handleChange={handleChange} half />
                                 </>
                             )
                         }
                         <Input name='email' label="Email Address" handleChange={handleChange} type="email" />
                         <Input name='password' label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
-                        { isSignup && <Input name="confirmPassword" label="Repeat Password" handlechange={handleChange} type="password" /> }
+                        { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" /> }
                     </Grid>
                     <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                         {isSignup ? 'Sign Up' : 'Sign In'}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { AppBar, Avatar, Typography, Toolbar, Button } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
+import decode from 'jwt-decode';
 
 import useStyles from './styles';
 import niechcemisieLogo from '../../images/logo.png';
@@ -15,7 +16,7 @@ const Navbar = () => {
     const location = useLocation();
     
     const logout = () => {
-        dispatch({ type: LOGOUT});
+        dispatch({ type: LOGOUT });
         
         navigate('/');
 
@@ -24,6 +25,13 @@ const Navbar = () => {
 
     useEffect(() => {
         const token = user?.token;
+
+        if (token) {
+            const decodedToken = decode(token);
+            if (decodedToken.exp * 1000 < new Date().getTime()) {
+                logout();
+            }
+        }
 
         setUser(JSON.parse(localStorage.getItem('profile')));
     }, [location]);

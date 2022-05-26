@@ -21,6 +21,7 @@ const Auth = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    // TODO change this as it was already commited
     const clientId = '236688733035-s6druk38ih8vavu65r1evee1opm15mjb.apps.googleusercontent.com';
 
     useEffect(() => {

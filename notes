@@ -6,3 +6,4 @@ db.characters.insertOne({ name: 'Jon Snow' })
 db.characters.find()
 db.characters.remove({ name: 'Jon snow' })
 db.characters.drop()
+db.postmessages.find({}, { selectedFile: 0 }) <- znajdź wszystko poza jedną kolumną

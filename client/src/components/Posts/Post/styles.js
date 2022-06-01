@@ -14,6 +14,7 @@ export default makeStyles({
     height: '100%',
   },
   card: {
+    margin: '10px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',

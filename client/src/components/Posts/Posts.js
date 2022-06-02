@@ -8,7 +8,7 @@ import Post from './Post/Post';
 const Container = styled.div`
   position: absolute;
   left: 30%;
-  top: 100px;
+  top: ${p => p.isSignedIn ? '550px' : '200px'};
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@ const Posts = ({ setCurrentId }) => {
 
     return (
         !posts.length ? <CircularProgress /> : (
-            <Container>
+            <Container isSignedIn={localStorage.getItem('profile')}>
                 {posts.map((post) => (
                     <PostContainer key={post._id}>
                         <Post post={post} setCurrentId={setCurrentId} />

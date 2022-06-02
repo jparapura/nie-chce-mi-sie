@@ -2,9 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
-
+import styled from 'styled-components';
 import useStyles from './styles';
+
 import { createPost, updatePost } from '../../actions/posts';
+
+const Container = styled.div`
+  position: absolute;
+  left: 30%;
+  top: 100px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 3px;
+  padding: 20px;
+`;
 
 const Form = ({ currentId, setCurrentId }) => {
     const [postData, setPostData] = useState({
@@ -14,9 +27,9 @@ const Form = ({ currentId, setCurrentId }) => {
         selectedFile: ''
     });
     const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
-    const classes = useStyles();
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
+    const classes = useStyles();
 
     useEffect(() => {
         if (post) setPostData(post);
@@ -42,16 +55,16 @@ const Form = ({ currentId, setCurrentId }) => {
 
     if (!user?.result?.name) {
         return (
-            <Paper className={classes.paper}>
+            <Container>
                 <Typography variant="h6" align="center">
                     Zaloguj się, aby móc tworzyć posty.
                 </Typography>
-            </Paper>
+            </Container>
         )
     }
 
     return (
-        <Paper className={classes.paper}>
+        <Container>
             <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
                 <Typography variant='h6'>{currentId ? 'Edytowanie' : 'Tworzenie'} czego mi sie nie chce</Typography>
                 <TextField name='title' variant='outlined' label='Title' fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
@@ -63,7 +76,7 @@ const Form = ({ currentId, setCurrentId }) => {
                 <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
                 <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
             </form>
-        </Paper>
+        </Container>
     );
 }
 

@@ -20,6 +20,7 @@ const auth = async (req, res, next) => {
 
         next();
     } catch (error) {
+        res.send("Authorization failed.");
         console.log(error);
     }
 }

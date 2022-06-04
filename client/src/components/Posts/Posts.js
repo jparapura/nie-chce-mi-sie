@@ -17,15 +17,16 @@ const Container = styled.div`
 const PostContainer = styled.div`
 `;
 
-const Posts = ({ setCurrentId }) => {
+const Posts = ({ setCurrentId, decreaseOffset }) => {
     const posts = useSelector((state) => state.posts);
 
     return (
+        // progress is not visible
         !posts.length ? <CircularProgress /> : (
             <Container isSignedIn={localStorage.getItem('profile')}>
                 {posts.map((post) => (
                     <PostContainer key={post._id}>
-                        <Post post={post} setCurrentId={setCurrentId} />
+                        <Post post={post} setCurrentId={setCurrentId} decreaseOffset={decreaseOffset} />
                     </PostContainer>
                 ))}
             </Container>

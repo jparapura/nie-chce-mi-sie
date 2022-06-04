@@ -10,7 +10,7 @@ API.interceptors.request.use((req) => {
     return req;
 });
 
-export const fetchPosts = () => API.get('/posts');
+export const fetchPosts = ({ limit, offset }) => API.get(`/posts/${limit}/${offset}`);
 export const createPost = (newPost) => API.post('/posts', newPost);
 export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updatedPost);
 export const deletePost = (id) => API.delete(`/posts/${id}`);

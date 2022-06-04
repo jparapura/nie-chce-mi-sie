@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 
 import { deletePost, likePost } from '../../../actions/posts';
 
-const Post = ({ post, setCurrentId }) => {
+const Post = ({ post, setCurrentId, decreaseOffset }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
@@ -27,6 +27,11 @@ const Post = ({ post, setCurrentId }) => {
         }
 
         return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
+    };
+
+    const handleDelete = () => {
+        dispatch(deletePost(post._id));
+        decreaseOffset();
     };
 
     return (
@@ -55,7 +60,7 @@ const Post = ({ post, setCurrentId }) => {
                     <Likes />
                 </Button>
                 {( user?.result?.googleId === post?.creator || user?.result?._id === post?.creator ) && (
-                    <Button size='small' color='primary' onClick={() => dispatch(deletePost(post._id))}>
+                    <Button size='small' color='primary' onClick={handleDelete}>
                         <DeleteIcon fontSize='small' />
                         Delete
                     </Button>

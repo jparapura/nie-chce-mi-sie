@@ -19,7 +19,7 @@ const Container = styled.div`
   padding: 20px;
 `;
 
-const Form = ({ currentId, setCurrentId }) => {
+const Form = ({ currentId, setCurrentId, increaseOffset }) => {
     const [postData, setPostData] = useState({
         title: '',
         message: '',
@@ -42,6 +42,7 @@ const Form = ({ currentId, setCurrentId }) => {
             dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
         }
         else {
+            increaseOffset();
             dispatch(createPost({ ...postData, name: user?.result?.name }));
         }
 

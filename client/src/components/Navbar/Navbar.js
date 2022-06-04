@@ -71,7 +71,7 @@ const Title = styled.span`
 
 const UserName = styled.span`
     color: #f5f5f5;
-    padding-right: 30px;
+    margin-right: 20px;
 `;
 
 const Navbar = () => {
@@ -114,9 +114,15 @@ const Navbar = () => {
     return (
         <>
         <Nav>
-          <UserName>
-            Jakub Parapura
-          </UserName>
+          {user?.result ? (
+              <>
+                <Avatar style={{marginRight: '20px'}} alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
+                <UserName>{user?.result.name}</UserName>
+                <Button style={{marginRight: '40px'}} onClick={logout} color="secondary" variant="contained">Logout</Button>
+              </>
+           ) : (
+             <Button style={{margin: '40px'}} component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
+           )}
         </Nav>
           <IconContext.Provider value={{ color: '#fff' }}>
             <SidebarNav>

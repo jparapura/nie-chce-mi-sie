@@ -7,11 +7,11 @@ const SidebarLink = styled(Link)`
   color: #e1e9fc;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   list-style: none;
-  height: 60px;
+  height: 30px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 15px;
 
   &:hover {
     background: #252831;
@@ -29,13 +29,13 @@ const DropdownLink = styled(Link)`
   max-height: ${p => p.isSelected() ? '60px' : '0'};
   height: 60px;
   overflow: hidden;
-  padding-left: 3rem;
+  padding-left: 1rem;
   display: flex;
   align-items: center;
   text-decoration: none;
   color: #f5f5f5;
-  font-size: 18px;
-  transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+  font-size: 15px;
+  transition: all 1s cubic-bezier(0, 1, 0, 1);
 
   &:hover {
     background: #632ce4;

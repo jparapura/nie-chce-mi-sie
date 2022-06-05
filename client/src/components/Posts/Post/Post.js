@@ -1,15 +1,55 @@
 import React from 'react';
-import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
+import { Card, CardActions, CardContent, CardMedia, Button } from '@material-ui/core';
+import styled from 'styled-components';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
+import 'moment/locale/pl';
 
 import useStyles from './styles';
 import { useDispatch } from 'react-redux';
 
 import { deletePost, likePost } from '../../../actions/posts';
+
+const Header = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const Picture = styled.img`
+    width: 500px;
+    margin-bottom: 10px;
+`;
+
+const PostDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #f5f5f5;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    width: 500px;
+`;
+
+const Message = styled.span`
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: justify;
+`;
+
+const Tags = styled.span`
+    color: grey;
+    font-size: 13px;
+`;
+
+const Footer = styled.div`
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+`;
 
 const Post = ({ post, setCurrentId, decreaseOffset }) => {
     const classes = useStyles();
@@ -34,28 +74,31 @@ const Post = ({ post, setCurrentId, decreaseOffset }) => {
         decreaseOffset();
     };
 
+    const handleEdit = () => {
+        setCurrentId(post._id);
+        window.scrollTo(0, 0);
+    }
+
     return (
-        <Card className={classes.card}>
-            <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
-            <div className={classes.overlay}>
-                <Typography variant="h6">{post.name}</Typography>
-                <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
+        <PostDiv>
+            <Header>
+                <span><strong>{post.name}</strong> nie chciało się <strong>{post.title}</strong> {moment(post.createdAt).fromNow()}.</span>
+                {( user?.result?.googleId === post?.creator || user?.result?._id === post?.creator ) && (
+                    <div>
+                        <Button style={{color: 'black'}} size="small" onClick={handleEdit}>
+                            <MoreHorizIcon fontSize="medium" />
+                        </Button>
+                    </div>
+                )}
+            </Header>
+            <Message>{post.message}</Message>
+            { post.selectedFile &&
+                <Picture src={post.selectedFile} />
+            }
+            <div>
+                <Tags>{post.tags.map((tag) => `#${tag} `)}</Tags>
             </div>
-            {( user?.result?.googleId === post?.creator || user?.result?._id === post?.creator ) && (
-                <div className={classes.overlay2}>
-                    <Button style={{color: 'white'}} size="small" onClick={() => setCurrentId(post._id)}>
-                        <MoreHorizIcon fontSize="medium" />
-                    </Button>
-                </div>
-            )}
-            <div className={classes.details}>
-                <Typography variant="body2" color="textSecondary">{post.tags.map((tag) => `#${tag} `)}</Typography>
-            </div>
-            <Typography className={classes.title} variant="h5" gutterBottom>{post.title}</Typography>
-            <CardContent>
-                <Typography variant="body2" color='textSecondary' component='p'>{post.message}</Typography>
-            </CardContent>
-            <CardActions className={classes.cardActions}>
+            <Footer>
                 <Button size='small' color='primary' disabled={!user?.result} onClick={() => dispatch(likePost(post._id))}>
                     <Likes />
                 </Button>
@@ -66,8 +109,8 @@ const Post = ({ post, setCurrentId, decreaseOffset }) => {
                     </Button>
                 )}
 
-            </CardActions>
-        </Card>
+            </Footer>
+        </PostDiv>
     );
 }
 

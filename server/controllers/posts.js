@@ -3,6 +3,7 @@ import PostMessage from "../models/postMessage.js";
 
 export const getPosts = async (req, res) => {
     const { limit, offset } = req.params;
+    console.log(req.params);
 
     try {
         // -createdAt means descending by date

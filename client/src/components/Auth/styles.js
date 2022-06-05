@@ -8,7 +8,6 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
     padding: theme.spacing(2),
     position: 'relative',
-    left: '100px',
     top: '30px',
   },
   root: {

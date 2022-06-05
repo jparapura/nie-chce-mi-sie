@@ -36,7 +36,7 @@ const NavIcon = styled(Link)`
 
 const SidebarNav = styled.nav`
   background: #15171c;
-  width: 250px;
+  width: 180px;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -57,15 +57,18 @@ const Logo = styled.img`
   margin-right: auto;
   width: 50%;
   padding-top: 10px;
+  padding-botton: 30px;
 `;
 
 const Title = styled.span`
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 60%;
+    width: 90%;
+    text-align: center;
     color: #f5f5f5;
     padding-top: 15px;
+    padding-bottom: 15px;
     font-size: 18px;
 `;
 

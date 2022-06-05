@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Grow, Grid } from '@material-ui/core';
+import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 
 import { substitutePosts, loadOlderPosts } from '../../actions/posts';
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
+
+const Container = styled.div`
+    margin: auto;
+    width: 50%;
+`;
 
 const Home = () => {
     const postsToLoad = 2;
@@ -42,16 +47,10 @@ const Home = () => {
     };
 
     return (
-        <Grow in>
-            <Container>
-                <Grid container justifyContent="space-between" alignItems="stretch" spacing={3}>
-                    <Form currentId={currentId} setCurrentId={setCurrentId} increaseOffset={increaseOffset} />
-                    <Grid item xs={12} sm={7}>
-                        <Posts setCurrentId={setCurrentId} decreaseOffset={decreaseOffset} />
-                    </Grid>
-                </Grid>
-            </Container>
-        </Grow>
+        <Container>
+            <Form currentId={currentId} setCurrentId={setCurrentId} increaseOffset={increaseOffset} />
+            <Posts setCurrentId={setCurrentId} decreaseOffset={decreaseOffset} />
+        </Container>
     );
 }
 

@@ -8,10 +8,10 @@ import useStyles from './styles';
 import { createPost, updatePost } from '../../actions/posts';
 
 const Container = styled.div`
-  position: absolute;
-  left: 30%;
-  top: 100px;
-  width: 40%;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -67,15 +67,15 @@ const Form = ({ currentId, setCurrentId, increaseOffset }) => {
     return (
         <Container>
             <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-                <Typography variant='h6'>{currentId ? 'Edytowanie' : 'Tworzenie'} czego mi sie nie chce</Typography>
+                <Typography variant='h6'>{currentId ? 'Edytuj' : 'Napisz'} czego ci sie nie chce</Typography>
                 <TextField name='title' variant='outlined' label='Title' fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
                 <TextField name='message' variant='outlined' label='Message' fullWidth value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
                 <TextField name='tags' variant='outlined' label='Tags' fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })} />
                 <div className={classes.fileInput}>
                     <FileBase type='file' multiple={false} onDone={({base64}) => setPostData({ ...postData, selectedFile: base64})} />
                 </div>
-                <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-                <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+                <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Zatwierdź</Button>
+                <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Wyczyść</Button>
             </form>
         </Container>
     );

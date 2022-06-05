@@ -32,12 +32,7 @@ export const SidebarData = [
 
     subNav: [
       {
-        title: 'Sign In',
-        path: '/auth',
-        icon: <FaIcons.FaKey />,
-      },
-      {
-        title: 'Sign up',
+        title: 'Sign In/Up',
         path: '/auth',
         icon: <FaIcons.FaKey />,
       },
@@ -61,6 +56,11 @@ export const SidebarData = [
         path: '/profile',
         icon: <FaIcons.FaWalking />,
       },
+      {
+        title: 'My stats',
+        path: '/stats/mine',
+        icon: <FaIcons.FaWalking />,
+      },
     ]
   },
   {
@@ -73,7 +73,7 @@ export const SidebarData = [
     subNav: [
       {
         title: 'Stats',
-        path: '/admin/stats',
+        path: '/stats',
         icon: <IoIcons.IoIosPaper />
       },
       {

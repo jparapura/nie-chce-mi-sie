@@ -1,5 +1,5 @@
 import React  from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Navbar from './components/Navbar/Navbar';
@@ -14,6 +14,7 @@ const App = () => (
         <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/auth" exact element={<Auth />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
     </BrowserRouter>
  )

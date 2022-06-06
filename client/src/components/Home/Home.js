@@ -14,11 +14,17 @@ const Container = styled.div`
 const Home = () => {
     const postsToLoad = 2;
     const initialLoad = 3;
+    const loadNewCooldown = 1000;
+    let lastLoad = Date.now();
     let offset = initialLoad;
+
     const dispatch = useDispatch();
     const [currentId, setCurrentId] = useState(null);
 
     const handleEndOfPage = () => {
+        if (lastLoad >= (Date.now() - loadNewCooldown))
+            return;
+        lastLoad = Date.now();
         dispatch(loadOlderPosts({ limit: postsToLoad, offset }));
         offset += postsToLoad;
     };

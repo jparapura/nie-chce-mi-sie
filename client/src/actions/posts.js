@@ -1,4 +1,4 @@
-import { SUBSTITUTE_ALL, LOAD_OLDER, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
+import { SUBSTITUTE_ALL, LOAD_OLDER, CREATE, UPDATE, DELETE, COMMENT } from '../constants/actionTypes';
 import * as api from '../api';
 
 // Action Creators
@@ -58,6 +58,19 @@ export const likePost = (id) => async (dispatch) => {
 
         dispatch({ type: UPDATE, payload: data });
     } catch (error) {
+        console.log(error);
+    }
+}
+
+export const commentPost = (value, id) => async (dispatch) => {
+    try {
+        const { data } = await api.comment(value, id);
+
+        dispatch({ type: COMMENT, payload: data });
+        
+        return data.comments;
+    }
+    catch (error) {
         console.log(error);
     }
 }

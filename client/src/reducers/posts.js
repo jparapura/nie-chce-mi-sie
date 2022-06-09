@@ -1,4 +1,4 @@
-import { SUBSTITUTE_ALL, LOAD_OLDER, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
+import { SUBSTITUTE_ALL, LOAD_OLDER, CREATE, UPDATE, DELETE, COMMENT } from '../constants/actionTypes';
 
 export default (posts = [], action) => {
     switch (action.type) {
@@ -12,6 +12,12 @@ export default (posts = [], action) => {
             return [...posts, ...action.payload];
         case CREATE:
             return [action.payload, ...posts];
+        case COMMENT:
+            return posts.map((post) => {
+                if (post._id === action.payload._id) return action.payload;
+
+                return post;
+            })
         default:
             return posts;
     }

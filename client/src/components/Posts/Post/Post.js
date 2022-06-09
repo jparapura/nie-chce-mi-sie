@@ -11,6 +11,7 @@ import 'moment/locale/pl';
 import { useDispatch } from 'react-redux';
 
 import { deletePost, likePost } from '../../../actions/posts';
+import CommentSection from './CommentSection';
 
 const Header = styled.div`
     display: flex;
@@ -108,6 +109,8 @@ const Post = ({ post, setCurrentId, decreaseOffset }) => {
                 )}
 
             </Footer>
+
+            <CommentSection post={post} />
         </PostDiv>
     );
 }

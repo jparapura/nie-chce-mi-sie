@@ -3,7 +3,6 @@ import PostMessage from "../models/postMessage.js";
 
 export const getPosts = async (req, res) => {
     const { limit, offset } = req.params;
-    console.log(req.params);
 
     try {
         // -createdAt means descending by date
@@ -81,6 +80,20 @@ export const likePost = async (req, res) => {
     } else {
         post.likes = post.likes.filter((id) => id !== String(req.userId));
     }
+
+    const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
+
+    res.json(updatedPost);
+}
+
+
+export const commentPost = async (req, res) => {
+    const { id } = req.params;
+    const { value } = req.body;
+
+    const post = await PostMessage.findById(id);
+    
+    post.comments.push(value);
 
     const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
 

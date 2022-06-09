@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -26,7 +26,7 @@ const SidebarLabel = styled.span`
 
 const DropdownLink = styled(Link)`
   background: #414757;
-  max-height: ${p => p.isSelected() ? '60px' : '0'};
+  max-height: ${p => p.isselected() ? '60px' : '0'};
   height: 60px;
   overflow: hidden;
   padding-left: 1rem;
@@ -44,7 +44,7 @@ const DropdownLink = styled(Link)`
    
 `;
 
-const SubMenu = ({ item, key, idx, selected, toggle }) => {
+const SubMenu = ({ item, idx, selected, toggle }) => {
     const location = useLocation();
 
     const isSelected = () => {
@@ -52,7 +52,7 @@ const SubMenu = ({ item, key, idx, selected, toggle }) => {
     }
 
   return (
-    <>
+    <div key={idx}>
       <SidebarLink to={item.path ? item.path : location.pathname} onClick={item.subNav && toggle}>
         <div>
           {item.icon}
@@ -69,13 +69,13 @@ const SubMenu = ({ item, key, idx, selected, toggle }) => {
       {item.subNav &&
         item.subNav.map((item, index) => {
           return (
-            <DropdownLink isSelected={() => isSelected()} to={item.path} key={index}>
+            <DropdownLink isselected={() => isSelected()} to={item.path} key={index}>
               {item.icon}
               <SidebarLabel>{item.title}</SidebarLabel>
             </DropdownLink>
           );
         })}
-    </>
+    </div>
   );
 };
 

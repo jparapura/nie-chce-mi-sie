@@ -42,7 +42,7 @@ const Home = () => {
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
         dispatch(substitutePosts({ limit: initialLoad, offset: 0 }));
-    }, []);
+    });
 
     const increaseOffset = () => {
         offset += 1;

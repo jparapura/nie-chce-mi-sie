@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardActions, CardContent, CardMedia, Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import styled from 'styled-components';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
@@ -8,7 +8,6 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
 import 'moment/locale/pl';
 
-import useStyles from './styles';
 import { useDispatch } from 'react-redux';
 
 import { deletePost, likePost } from '../../../actions/posts';
@@ -52,7 +51,6 @@ const Footer = styled.div`
 `;
 
 const Post = ({ post, setCurrentId, decreaseOffset }) => {
-    const classes = useStyles();
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
 

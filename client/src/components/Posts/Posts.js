@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { CircularProgress } from '@material-ui/core'
+import { LinearProgress } from '@material-ui/core'
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
@@ -24,8 +24,11 @@ const Posts = ({ setCurrentId, decreaseOffset }) => {
   });
 
     return (
-        // TODO progress is not visible
-        !posts.length ? <CircularProgress /> : (
+        !posts.length ? (
+            <Container isSignedIn={localStorage.getItem('profile')} style={{ width: '500px' }}>
+                <LinearProgress />
+            </Container>
+            ) : (
             <Container isSignedIn={localStorage.getItem('profile')}>
                 {posts.map((post) => (
                     <PostContainer key={post._id}>

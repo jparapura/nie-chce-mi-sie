@@ -78,4 +78,19 @@ export const SidebarData = [
       },
     ]
   },
+  {
+    title: 'About',
+    icon: <FaIcons.FaInfoCircle />,
+
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+
+    subNav: [
+      {
+        title: 'About this page',
+        path: '/about',
+        icon: <FaIcons.FaInfo />
+      },
+    ]
+  },
 ];

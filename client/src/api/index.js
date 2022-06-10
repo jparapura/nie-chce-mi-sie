@@ -19,3 +19,5 @@ export const comment = (value, id) => API.post(`/posts/${id}/commentPost`, { val
 
 export const signIn = (formData) => API.post('/users/signin', formData);
 export const signUp = (formData) => API.post('/users/signup', formData);
+
+export const checkAdmin = (id) => API.get(`/admins/checkIfAdmin/${id}`);

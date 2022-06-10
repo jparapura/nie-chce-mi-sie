@@ -58,7 +58,7 @@ export const SidebarData = [
       },
       {
         title: 'My stats',
-        path: '/stats/mine',
+        path: '/profile',
         icon: <FaIcons.FaWalking />,
       },
     ]
@@ -72,15 +72,10 @@ export const SidebarData = [
 
     subNav: [
       {
-        title: 'Stats',
-        path: '/stats',
+        title: 'Check admin status',
+        path: '/checkAdmin',
         icon: <IoIcons.IoIosPaper />
       },
-      {
-        title: 'Toggle admin mode',
-        path: '/admin/toggle',
-        icon: <FaIcons.FaToggleOn />
-      }
     ]
   },
 ];

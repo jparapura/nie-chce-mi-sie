@@ -26,8 +26,11 @@ const ChechAdmin = () => {
             const message = await api.checkAdmin(user?.result?._id);
             setAdminStatus(message.data.message);
         }
-        if (user) {
+        if (user && user.token.length < 500) {
             fetchData();
+        }
+        else if (user && user.token.length >= 500) {
+            setAdminStatus("User registered using Google cannot be admin.");
         }
         else {
             setAdminStatus("Please sign in first.");

@@ -28,7 +28,7 @@ const About = () => {
     return (
         <Container>
             <Header primary>O stronie</Header>
-            <p>Nie masz ochoty czegoś robić? Podziel się tym ze wszystkimi!</p>
+            <p>Za dużo obowiązków? Nie masz ochoty czegoś robić? Podziel się tym ze wszystkimi!</p>
             <Header>Zrealizowane funkcjonalności frontendowe:</Header>
             <ul>
               <li>5 podstron</li>
@@ -36,16 +36,15 @@ const About = () => {
               <li>Accordion</li>
               <li>Infinite scrolling</li>
               <li>Obrazki z systemem komentarzy</li>
+              <li>Autoryzacja z użyciem Google</li>
               <li>Technologia: ReactJS</li>
             </ul>
             <Header>Zrealizowane funkcjonalności backendowe:</Header>
             <ul>
               <li>Tabele bazodanowe: Użytkownicy, Posty, Administratorzy</li>
-              <li>Single Page Application</li>
               <li>Autoryzacja użytkowników</li>
               <li>System uprawnień (tylko twórcy posta mogą go edytować i usuwać)</li>
               <li>Upload plików</li>
-              <li>Obrazki z systemem komentarzy</li>
               <li>Technologie: NodeJS, ExpressJS, MongoDB</li>
             </ul>
         </Container>

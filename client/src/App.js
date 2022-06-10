@@ -6,6 +6,7 @@ import Auth from './components/Auth/Auth';
 import Home from './components/Home/Home';
 import CheckAdmin from './components/CheckAdmin/CheckAdmin';
 import About from './components/About/About';
+import MyProfile from './components/MyProfile/MyProfile';
 
 
 
@@ -15,6 +16,7 @@ const App = () => (
         <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/auth" exact element={<Auth />} />
+            <Route path="/profile" exact element={<MyProfile />} />
             <Route path="/checkAdmin" exact element={<CheckAdmin />} />
             <Route path="/about" exact element={<About />} />
             <Route path="*" element={<Navigate to="/" replace />} />

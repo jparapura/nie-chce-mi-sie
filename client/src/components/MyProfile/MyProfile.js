@@ -22,21 +22,27 @@ const MyProfile = () => {
     return (
         <Message>
             <h2>Mój profil</h2>
-            <p>Zalogowano {user.token.length < 500 ? "bez użycia" : "z użyciem"} Google</p>
-            <strong>Imię i nazwisko: </strong>
-            <p>{user.result.name}</p>
-            <strong>Email: </strong>
-            <p>{user.result.email}</p>
-            {user.token.length < 500 ? (
+            {user ? (
                 <>
-                    <strong>Identyfikator w bazie: </strong>
-                    <p>{user.result._id}</p>
+                    <p>Zalogowano {user.token.length < 500 ? "bez użycia" : "z użyciem"} Google</p>
+                    <strong>Imię i nazwisko: </strong>
+                    <p>{user.result.name}</p>
+                    <strong>Email: </strong>
+                    <p>{user.result.email}</p>
+                    {user.token.length < 500 ? (
+                        <>
+                            <strong>Identyfikator w bazie: </strong>
+                            <p>{user.result._id}</p>
+                        </>
+                    ) : (
+                        <>
+                            <strong>GoogleId: </strong>
+                            <p>{user.result.googleId}</p>
+                        </>
+                    )}
                 </>
             ) : (
-                <>
-                    <strong>GoogleId: </strong>
-                    <p>{user.result.googleId}</p>
-                </>
+                <p>Zaloguj się, aby wyświetlić te sekcję.</p>
             )}
         </Message>
     );

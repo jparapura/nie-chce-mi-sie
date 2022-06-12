@@ -30,16 +30,16 @@ const ChechAdmin = () => {
             fetchData();
         }
         else if (user && user.token.length >= 500) {
-            setAdminStatus("User registered using Google cannot be admin.");
+            setAdminStatus("Użytkownik zalogowany przy użyciu Google nie może być administratorem.");
         }
         else {
-            setAdminStatus("Please sign in first.");
+            setAdminStatus("Zaloguj się, aby wyświetlić te sekcję.");
         }
     }, [user]);
 
     return (
         <Message>
-            <strong>Admin status:</strong>
+            <strong>Status bycia administratorem:</strong>
             {adminStatus}
         </Message>
     );

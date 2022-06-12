@@ -6,40 +6,40 @@ import * as RiIcons from 'react-icons/ri';
 
 export const SidebarData = [
   {
-    title: 'Browse',
+    title: 'Przeglądaj',
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
     subNav: [
       {
-        title: 'Feed',
+        title: 'Tablica',
         path: '/',
         icon: <IoIcons.IoIosPaper />
       },
       {
-        title: 'Explore',
+        title: 'Eksploruj',
         path: '/browse/explore',
         icon: <IoIcons.IoIosPaper />
       }
     ]
   },
   {
-    title: 'Authorization',
+    title: 'Autoryzacja',
     icon: <FaIcons.FaLock />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
     subNav: [
       {
-        title: 'Sign In/Up',
+        title: 'Logowanie',
         path: '/auth',
         icon: <FaIcons.FaKey />,
       },
     ]
   },
   {
-    title: 'Me',
+    title: 'Ja',
     icon: <FaIcons.FaAddressCard />,
 
     iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -47,24 +47,24 @@ export const SidebarData = [
 
     subNav: [
       {
-        title: 'My profile',
+        title: 'Mój profil',
         path: '/profile',
         icon: <FaIcons.FaUserAlt />,
       },
       {
-        title: 'My posts',
+        title: 'Moje posty',
         path: '/profile',
         icon: <FaIcons.FaWalking />,
       },
       {
-        title: 'My stats',
+        title: 'Moje statystyki',
         path: '/profile',
         icon: <FaIcons.FaWalking />,
       },
     ]
   },
   {
-    title: 'Admin panel',
+    title: 'Panel administratora',
     icon: <FaIcons.FaServer />,
 
     iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -72,14 +72,14 @@ export const SidebarData = [
 
     subNav: [
       {
-        title: 'Check admin status',
+        title: 'Sprawdź bycie administratorem',
         path: '/checkAdmin',
         icon: <IoIcons.IoIosPaper />
       },
     ]
   },
   {
-    title: 'About',
+    title: 'O stronie',
     icon: <FaIcons.FaInfoCircle />,
 
     iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -87,7 +87,7 @@ export const SidebarData = [
 
     subNav: [
       {
-        title: 'About this page',
+        title: 'Informacje',
         path: '/about',
         icon: <FaIcons.FaInfo />
       },

@@ -20,16 +20,20 @@ const CommentSection = ({ post }) => {
 
     return (
         <>
-            <div>
-                <h6>Komentarze</h6>
-                {comments.map((c, i) => (
-                    <div key={i}>
-                        <strong>{c.split(': ')[0]}</strong>
-                        {/* TODO what if sb put ':' inside comment? */}
-                        {c.split(':')[1]}
-                    </div>
-                ))}
-            </div>
+            {comments.length > 0 ? (
+                <div>
+                    <h6>Komentarze</h6>
+                    {comments.map((c, i) => (
+                        <div key={i}>
+                            <strong>{c.split(': ')[0]}</strong>
+                            {/* TODO what if sb put ':' inside comment? */}
+                            {c.split(':')[1]}
+                        </div>
+                    ))}
+                </div>
+            ) : (
+                <h6>Nikt nie skomentował tego posta.</h6>
+            )}
             {user?.result?.name && (
                 <div style={{ width: '70%' }}>
                     <span>Napisz komentarz</span>
